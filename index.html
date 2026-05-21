@@ -1,1 +1,357 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Meridian Trust — Banking Built Around You</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#1a2a80;
+    --navy-deep:#0f1a5c;
+    --navy-soft:#2d3eaa;
+    --lime:#7ed321;
+    --lime-bright:#9be83b;
+    --lavender:#eef0ff;
+    --ink:#0b1240;
+    --muted:#5b6394;
+    --white:#ffffff;
+    --grad-hero: linear-gradient(135deg, rgba(15,26,92,.92) 0%, rgba(45,62,170,.78) 60%, rgba(126,211,33,.35) 100%);
+    --grad-cta: linear-gradient(135deg,#7ed321 0%,#5cb800 100%);
+    --grad-card: linear-gradient(160deg,#ffffff 0%,#f5f7ff 100%);
+    --grad-section: linear-gradient(180deg,#eef0ff 0%,#ffffff 100%);
+    --shadow-lg: 0 30px 60px -20px rgba(15,26,92,.25);
+    --shadow-md: 0 12px 30px -10px rgba(15,26,92,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:'Sora',sans-serif;color:var(--navy);letter-spacing:-.02em;line-height:1.15}
+  a{text-decoration:none;color:inherit}
+  img{max-width:100%;display:block}
+  .container{max-width:1240px;margin:0 auto;padding:0 28px}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid #e6e9f5}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Sora';font-weight:800;font-size:22px;color:var(--navy)}
+  .logo-mark{width:34px;height:34px;border-radius:9px;background:var(--grad-cta);display:grid;place-items:center;color:#0f1a5c;font-weight:800;box-shadow:0 6px 16px -4px rgba(126,211,33,.6)}
+  nav ul{display:flex;gap:34px;list-style:none}
+  nav a{color:#2a3170;font-weight:500;font-size:15px;transition:color .2s}
+  nav a:hover{color:var(--lime);}
+  .btn{display:inline-block;padding:13px 26px;border-radius:10px;font-weight:600;font-size:15px;transition:transform .2s,box-shadow .2s;cursor:pointer;border:none}
+  .btn-primary{background:var(--grad-cta);color:#0f1a5c;box-shadow:0 10px 24px -8px rgba(126,211,33,.55)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(126,211,33,.7)}
+  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+  .btn-ghost:hover{background:rgba(255,255,255,.1)}
+
+  /* HERO */
+  .hero{position:relative;min-height:640px;display:flex;align-items:center;overflow:hidden;color:#fff}
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:var(--grad-hero)}
+  .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.2fr .9fr;gap:60px;align-items:center;padding:90px 0}
+  .eyebrow{display:inline-block;padding:6px 14px;border-radius:999px;background:rgba(126,211,33,.18);color:var(--lime-bright);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px;border:1px solid rgba(126,211,33,.35)}
+  .hero h1{color:#fff;font-size:clamp(38px,5vw,62px);font-weight:800;margin-bottom:22px}
+  .hero h1 span{background:linear-gradient(90deg,#9be83b,#d6ffa3);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{font-size:19px;color:#d8defb;max-width:540px;margin-bottom:34px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-card{background:rgba(255,255,255,.97);border-radius:20px;padding:32px;color:var(--ink);box-shadow:var(--shadow-lg)}
+  .hero-card h3{font-size:22px;margin-bottom:8px}
+  .hero-card .sub{color:var(--muted);font-size:14px;margin-bottom:22px}
+  .field{margin-bottom:14px}
+  .field input{width:100%;padding:14px 16px;border:1.5px solid #e0e4f5;border-radius:10px;font-size:15px;font-family:inherit;transition:border-color .2s,box-shadow .2s}
+  .field input:focus{outline:none;border-color:var(--navy-soft);box-shadow:0 0 0 4px rgba(45,62,170,.12)}
+  .hero-card .btn{width:100%;padding:15px;font-size:16px}
+
+  /* STATS */
+  .stats{background:#fff;padding:0;margin-top:-50px;position:relative;z-index:5}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--grad-card);border-radius:18px;box-shadow:var(--shadow-md);padding:32px;border:1px solid #ecefff}
+  .stat{text-align:center;padding:10px;border-right:1px solid #e6e9f5}
+  .stat:last-child{border-right:none}
+  .stat .num{font-family:'Sora';font-weight:800;font-size:34px;color:var(--navy);background:linear-gradient(135deg,#1a2a80,#5cb800);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat .lbl{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:4px;font-weight:600}
+
+  /* SERVICES */
+  section{padding:100px 0}
+  .section-head{text-align:center;max-width:680px;margin:0 auto 60px}
+  .section-head .eyebrow{background:rgba(26,42,128,.08);color:var(--navy);border-color:rgba(26,42,128,.18)}
+  .section-head h2{font-size:clamp(30px,3.6vw,46px);margin-bottom:16px}
+  .section-head p{color:var(--muted);font-size:17px}
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .service-card{background:var(--grad-card);border:1px solid #ecefff;border-radius:18px;padding:34px;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden}
+  .service-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-cta);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+  .service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:#d8deff}
+  .service-card:hover::before{transform:scaleX(1)}
+  .icon{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--navy),var(--navy-soft));display:grid;place-items:center;color:var(--lime-bright);margin-bottom:22px;font-size:24px;box-shadow:0 10px 20px -8px rgba(26,42,128,.4)}
+  .service-card h3{font-size:21px;margin-bottom:10px}
+  .service-card p{color:var(--muted);font-size:15px}
+  .service-card a.more{display:inline-block;margin-top:18px;color:var(--navy);font-weight:600;font-size:14px;border-bottom:2px solid var(--lime);padding-bottom:2px}
+
+  /* MID SECTION */
+  .mid{background:var(--grad-section);position:relative;overflow:hidden}
+  .mid::before{content:"";position:absolute;top:-120px;right:-120px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(126,211,33,.18),transparent 70%)}
+  .mid::after{content:"";position:absolute;bottom:-150px;left:-150px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(26,42,128,.12),transparent 70%)}
+  .mid-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;position:relative}
+  .mid-img{border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);position:relative}
+  .mid-img::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 60%,rgba(26,42,128,.25))}
+  .mid-badge{position:absolute;bottom:24px;left:24px;background:#fff;padding:16px 22px;border-radius:14px;box-shadow:var(--shadow-md);z-index:2;display:flex;gap:14px;align-items:center}
+  .mid-badge .dot{width:42px;height:42px;border-radius:50%;background:var(--grad-cta);display:grid;place-items:center;color:#0f1a5c;font-weight:800}
+  .mid-badge .t{font-weight:700;color:var(--navy);font-size:15px}
+  .mid-badge .s{font-size:12px;color:var(--muted)}
+  .mid h2{font-size:clamp(28px,3.4vw,42px);margin-bottom:20px}
+  .mid > .container > .mid-grid .text p{color:var(--muted);font-size:17px;margin-bottom:24px}
+  .checklist{list-style:none;margin-bottom:30px}
+  .checklist li{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px;font-size:15px}
+  .check{flex:none;width:26px;height:26px;border-radius:50%;background:var(--grad-cta);display:grid;place-items:center;color:#0f1a5c;font-weight:800;font-size:14px;box-shadow:0 4px 10px -2px rgba(126,211,33,.5)}
+
+  /* CTA BANNER */
+  .cta-banner{background:linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 50%,var(--navy-soft) 100%);color:#fff;text-align:center;border-radius:24px;padding:70px 40px;margin:0 28px;position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
+  .cta-banner::before{content:"";position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(126,211,33,.35),transparent 70%)}
+  .cta-banner::after{content:"";position:absolute;bottom:-80px;left:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(126,211,33,.2),transparent 70%)}
+  .cta-banner h2{color:#fff;font-size:clamp(28px,3.4vw,40px);margin-bottom:14px;position:relative}
+  .cta-banner p{color:#d8defb;font-size:17px;max-width:560px;margin:0 auto 28px;position:relative}
+  .cta-banner .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+
+  /* TESTIMONIAL */
+  .testimonials{padding-top:130px}
+  .quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .quote{background:var(--grad-card);border:1px solid #ecefff;border-radius:18px;padding:30px;position:relative}
+  .quote .stars{color:#f5b400;font-size:16px;margin-bottom:14px;letter-spacing:2px}
+  .quote p{color:var(--ink);font-size:15px;font-style:italic;margin-bottom:20px}
+  .quote .who{display:flex;align-items:center;gap:12px}
+  .avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--lime));display:grid;place-items:center;color:#fff;font-weight:700}
+  .who .n{font-weight:700;font-size:14px}
+  .who .r{font-size:12px;color:var(--muted)}
+
+  /* FOOTER */
+  footer{background:#0a1240;color:#c5cce8;padding:70px 0 30px;margin-top:80px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:50px;margin-bottom:50px}
+  footer h4{color:#fff;font-size:16px;margin-bottom:18px;font-family:'Sora'}
+  footer ul{list-style:none}
+  footer li{margin-bottom:10px;font-size:14px}
+  footer a:hover{color:var(--lime-bright)}
+  .foot-about p{font-size:14px;color:#9aa3c9;margin-top:14px;max-width:280px}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:13px;color:#7d87b5}
+
+  @media (max-width: 900px){
+    nav ul{display:none}
+    .hero-inner{grid-template-columns:1fr;gap:40px;padding:60px 0}
+    .stats-grid{grid-template-columns:repeat(2,1fr)}
+    .stat{border-right:none;border-bottom:1px solid #e6e9f5;padding:18px}
+    .stat:nth-child(odd){border-right:1px solid #e6e9f5}
+    .services-grid,.quote-grid,.mid-grid,.foot-grid{grid-template-columns:1fr;gap:30px}
+    section{padding:70px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="logo"><span class="logo-mark">M</span> Meridian Trust</a>
+    <nav>
+      <ul>
+        <li><a href="#services">Personal</a></li>
+        <li><a href="#services">Business</a></li>
+        <li><a href="#wealth">Wealth</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#open" class="btn btn-primary">Open Account</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="bank-banner.jpg" alt="Banking professionals reviewing financial dashboard" />
+  </div>
+  <div class="container hero-inner">
+    <div>
+      <span class="eyebrow">Trusted since 1962</span>
+      <h1>Banking built around <span>your ambition.</span></h1>
+      <p>From everyday checking to wealth that compounds for generations — Meridian Trust gives you the tools, advisors, and certainty to move forward with confidence.</p>
+      <div class="hero-cta">
+        <a href="#open" class="btn btn-primary">Open an Account</a>
+        <a href="#services" class="btn btn-ghost">Explore Services</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Get a free consultation</h3>
+      <p class="sub">Speak with a certified Meridian advisor in 24 hours.</p>
+      <form onsubmit="event.preventDefault();alert('Thanks! A Meridian advisor will reach out shortly.');">
+        <div class="field"><input type="text" placeholder="Full name" required /></div>
+        <div class="field"><input type="email" placeholder="Email address" required /></div>
+        <div class="field"><input type="tel" placeholder="Phone number" /></div>
+        <button class="btn btn-primary" type="submit">Request Consultation</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat"><div class="num">$84B</div><div class="lbl">Assets Managed</div></div>
+      <div class="stat"><div class="num">1.2M+</div><div class="lbl">Active Clients</div></div>
+      <div class="stat"><div class="num">63 yrs</div><div class="lbl">Of Trust</div></div>
+      <div class="stat"><div class="num">A+</div><div class="lbl">S&amp;P Rating</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Our Services</span>
+      <h2>Every financial moment, beautifully handled.</h2>
+      <p>Whether you're buying your first home or scaling a global enterprise, we have a dedicated team and a tailored product.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="icon">✦</div>
+        <h3>Personal Banking</h3>
+        <p>Checking, savings, and credit cards with zero hidden fees and 24/7 mobile control.</p>
+        <a href="#" class="more">Explore accounts →</a>
+      </div>
+      <div class="service-card">
+        <div class="icon">◆</div>
+        <h3>Business Banking</h3>
+        <p>Operating accounts, lines of credit, and treasury tools that grow with your company.</p>
+        <a href="#" class="more">For businesses →</a>
+      </div>
+      <div class="service-card">
+        <div class="icon">★</div>
+        <h3>Wealth Management</h3>
+        <p>Personalized portfolios, retirement planning, and trusts managed by certified advisors.</p>
+        <a href="#" class="more">Grow your wealth →</a>
+      </div>
+      <div class="service-card">
+        <div class="icon">⬢</div>
+        <h3>Mortgages &amp; Loans</h3>
+        <p>Competitive rates, quick approvals, and a real human at every step of your journey.</p>
+        <a href="#" class="more">Get pre-qualified →</a>
+      </div>
+      <div class="service-card">
+        <div class="icon">▲</div>
+        <h3>Investments</h3>
+        <p>Trade stocks, ETFs, and bonds — or let our robo-advisor build a portfolio for you.</p>
+        <a href="#" class="more">Start investing →</a>
+      </div>
+      <div class="service-card">
+        <div class="icon">●</div>
+        <h3>Digital Banking</h3>
+        <p>Award-winning app with instant transfers, smart budgeting, and biometric security.</p>
+        <a href="#" class="more">See the app →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MID SECTION -->
+<section class="mid" id="wealth">
+  <div class="container">
+    <div class="mid-grid">
+      <div class="mid-img">
+        <img src="bank-midsection.jpg" alt="Family meeting with a Meridian Trust financial advisor" />
+        <div class="mid-badge">
+          <div class="dot">✓</div>
+          <div>
+            <div class="t">FDIC Insured</div>
+            <div class="s">Up to $250,000 per depositor</div>
+          </div>
+        </div>
+      </div>
+      <div class="text">
+        <span class="eyebrow" style="background:rgba(26,42,128,.08);color:var(--navy);border-color:rgba(26,42,128,.18);">Why Meridian</span>
+        <h2>A bank that treats your money like it matters — because it does.</h2>
+        <p>Our advisors don't work on commission. They work on your goals. That's why families stay with us for generations and businesses scale with us across continents.</p>
+        <ul class="checklist">
+          <li><span class="check">✓</span><span><b>Dedicated relationship manager</b> — one human, one phone number, all your accounts.</span></li>
+          <li><span class="check">✓</span><span><b>Transparent pricing</b> — no surprise fees, ever. What you see is what you pay.</span></li>
+          <li><span class="check">✓</span><span><b>Award-winning mobile app</b> — pay, save, and invest from anywhere in seconds.</span></li>
+          <li><span class="check">✓</span><span><b>Bank-grade security</b> — biometric login, fraud monitoring, zero-liability protection.</span></li>
+        </ul>
+        <a href="#open" class="btn btn-primary">Become a Client</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Client Stories</span>
+      <h2>Loved by people who care where their money sleeps.</h2>
+    </div>
+    <div class="quote-grid">
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>“Meridian helped us refinance our mortgage and start a college fund in the same afternoon. The advisor felt like a friend who happens to know finance.”</p>
+        <div class="who"><div class="avatar">SR</div><div><div class="n">Sarah R.</div><div class="r">Personal client • 6 years</div></div></div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>“We moved our entire treasury to Meridian in 2021. Faster wires, better rates, and an actual person who answers the phone. Game changer.”</p>
+        <div class="who"><div class="avatar">DK</div><div><div class="n">David K.</div><div class="r">CFO, Aperture Labs</div></div></div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>“The wealth team built me a retirement plan I actually understand. After 30 years with another bank, I finally feel in control.”</p>
+        <div class="who"><div class="avatar">MO</div><div><div class="n">Maria O.</div><div class="r">Wealth client • 3 years</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="container">
+  <div class="cta-banner" id="open">
+    <h2>Ready to bank with a clearer view?</h2>
+    <p>Open a Meridian account in under 5 minutes. No minimums. No paperwork. Just better banking from day one.</p>
+    <div class="btns">
+      <a href="#" class="btn btn-primary">Open Account</a>
+      <a href="#contact" class="btn btn-ghost">Talk to an Advisor</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a href="#" class="logo" style="color:#fff"><span class="logo-mark">M</span> Meridian Trust</a>
+        <p>Banking, wealth, and lending services trusted by over a million families and businesses since 1962.</p>
+      </div>
+      <div>
+        <h4>Banking</h4>
+        <ul><li><a href="#">Checking</a></li><li><a href="#">Savings</a></li><li><a href="#">Credit Cards</a></li><li><a href="#">Mortgages</a></li></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Newsroom</a></li><li><a href="#">Investor Relations</a></li></ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul><li><a href="#">Help Center</a></li><li><a href="#">Contact</a></li><li><a href="#">Security</a></li><li><a href="#">Find a Branch</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 Meridian Trust Bank, N.A. Member FDIC. Equal Housing Lender.</div>
+      <div>Privacy • Terms • Accessibility</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
